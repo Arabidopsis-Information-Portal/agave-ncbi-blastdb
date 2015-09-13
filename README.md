@@ -11,8 +11,6 @@ It assumes you have installed and know how to use:
 
 ## Bootstrapping
 
-## Bootstrapping
-
 ```
 python createBlastDbDockerfile.py Manifest.yml
 ```
