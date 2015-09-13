@@ -1,0 +1,90 @@
+{
+    "databases": [
+        {
+            "filename": "Araport11_genes.20150701.cds.fasta",
+            "label": "Araport11 Coding Sequences (CDS) - Pre-release 20150701",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "Araport11_genes.20150701.pep.fasta",
+            "label": "Araport11 Protein Sequences (CDS translation) - Pre-release 20150701",
+            "type": "peptide"
+        },
+        {
+            "filename": "uniprot_sprot_plants.fasta",
+            "label": "SwissProt curated and reviewed plant proteomes",
+            "type": "protein"
+        },
+        {
+            "filename": "uniprot_trembl_plants.fasta",
+            "label": "UniProt trEMBL green plant proteomes",
+            "type": "protein"
+        },
+	{
+            "filename": "TAIR10_intron_20101028",
+            "label": "TAIR10 introns",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_cds_20101214_updated",
+            "label": "TAIR10 Coding sequences (CDS)",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_cdna_20101214_updated",
+            "label": "TAIR10 cDNA sequences (defined as UTRs + CDS - introns)",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_seq_20101214_updated",
+            "label": "TAIR10 Gene sequences (defined as UTRs + CDSs + introns)",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_downstream_500_20101028",
+            "label": "TAIR10 Downstream 500 bp",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_downstream_1000_20101104",
+            "label": "TAIR10 Downstream 1000 bp",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_downstream_3000_20101028",
+            "label": "TAIR10 Downstream 3000 bp",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_upstream_500_20101028",
+            "label": "TAIR10 Upstream 500 bp",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_upstream_1000_20101104",
+            "label": "TAIR10 Upstream 1000 bp",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_upstream_3000_20101028",
+            "label": "TAIR10 Upstream 3000 bp",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_TE",
+            "label": "TAIR10 Transposable elements",
+            "type": "nucleotide"
+        },
+        {
+            "filename": "TAIR10_pep_20101214_updated",
+            "label": "TAIR10 Protein sequences (CDS translation)",
+            "type": "peptide"
+        }
+	,
+        {
+            "filename": "TAIR10_Chr.all.fasta",
+            "label": "TAIR10 Chromosome Sequences",
+            "type": "nucleotide"
+        }
+    ]
+}

@@ -1,20 +1,23 @@
 FROM araport/agave-ncbi-blast:2.2.30
-MAINTAINER Matthew Vaughn <vaughn@tacc.utexas.edu>
+MAINTAINER vaughn@tacc.utexas.edu
 
-
-RUN wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_pep_20101214_updated" \
-    && makeblastdb -in TAIR10_pep_20101214_updated -dbtype prot -title 'TAIR10 Protein sequences (CDS translation)' -out /opt/databases/TAIR10_pep_20101214_updated \
-    && rm TAIR10_pep_20101214_updated
-
-RUN wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_transposable_elements/TAIR10_TE.fas" \
-    && makeblastdb -in TAIR10_TE.fas -dbtype nucl -title 'TAIR10 Transposable Elements' -out /opt/databases/TAIR10_TE \
-    && rm TAIR10_TE.fas
-
-RUN wget "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_seq_20101214_updated" \
-    && makeblastdb -in TAIR10_seq_20101214_updated -dbtype nucl -title 'TAIR10 Gene sequences (defined as UTRs + CDSs + introns)' -out /opt/databases/TAIR10_seq_20101214_updated \
-    && rm TAIR10_seq_20101214_updated
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_pep_20101214_updated" && makeblastdb -in TAIR10_pep_20101214_updated -dbtype prot -label 'TAIR10 Protein sequences (CDS translation)' -out /opt/databases/TAIR10_pep_20101214_updated && rm -rf TAIR10_pep_20101214_updated
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_transposable_elements/TAIR10_TE.fas" && makeblastdb -in TAIR10_TE.fas -dbtype nucl -label 'TAIR10 Transposable Elements' -out /opt/databases/TAIR10_TE.fas && rm -rf TAIR10_TE.fas
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_seq_20101214_updated" && makeblastdb -in TAIR10_seq_20101214_updated -dbtype nucl -label 'TAIR10 Gene sequences' -out /opt/databases/TAIR10_seq_20101214_updated && rm -rf TAIR10_seq_20101214_updated
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_cdna_20101214_updated" && makeblastdb -in TAIR10_cdna_20101214_updated -dbtype nucl -label 'TAIR10 cDNA sequences' -out /opt/databases/TAIR10_cdna_20101214_updated && rm -rf TAIR10_cdna_20101214_updated
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_5_utr_20101028" && makeblastdb -in TAIR10_5_utr_20101028 -dbtype nucl -label 'TAIR10 5prime UTR sequences' -out /opt/databases/TAIR10_5_utr_20101028 && rm -rf TAIR10_5_utr_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_3_utr_20101028" && makeblastdb -in TAIR10_3_utr_20101028 -dbtype nucl -label 'TAIR10 3prime UTR sequences' -out /opt/databases/TAIR10_3_utr_20101028 && rm -rf TAIR10_3_utr_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_cds_20101214_updated" && makeblastdb -in TAIR10_cds_20101214_updated -dbtype nucl -label 'TAIR10 Coding sequences' -out /opt/databases/TAIR10_cds_20101214_updated && rm -rf TAIR10_cds_20101214_updated
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_exon_20101028" && makeblastdb -in TAIR10_exon_20101028 -dbtype nucl -label 'TAIR10 exons' -out /opt/databases/TAIR10_exon_20101028 && rm -rf TAIR10_exon_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_intron_20101028" && makeblastdb -in TAIR10_intron_20101028 -dbtype nucl -label 'TAIR10 introns' -out /opt/databases/TAIR10_intron_20101028 && rm -rf TAIR10_intron_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_intergenic_20101028" && makeblastdb -in TAIR10_intergenic_20101028 -dbtype nucl -label 'TAIR10 intergenic regions' -out /opt/databases/TAIR10_intergenic_20101028 && rm -rf TAIR10_intergenic_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_bac_con_20101028" && makeblastdb -in TAIR10_bac_con_20101028 -dbtype nucl -label 'TAIR10 BAC sequences' -out /opt/databases/TAIR10_bac_con_20101028 && rm -rf TAIR10_bac_con_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_500_20101028" && makeblastdb -in TAIR10_upstream_500_20101028 -dbtype nucl -label 'TAIR10 Upstream 500bp' -out /opt/databases/TAIR10_upstream_500_20101028 && rm -rf TAIR10_upstream_500_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_1000_20101104" && makeblastdb -in TAIR10_upstream_1000_20101104 -dbtype nucl -label 'TAIR10 Upstream 1000bp' -out /opt/databases/TAIR10_upstream_1000_20101104 && rm -rf TAIR10_upstream_1000_20101104
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_3000_20101028" && makeblastdb -in TAIR10_upstream_3000_20101028 -dbtype nucl -label 'TAIR10 Upstream 3000bp' -out /opt/databases/TAIR10_upstream_3000_20101028 && rm -rf TAIR10_upstream_3000_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_500_20101028" && makeblastdb -in TAIR10_downstream_500_20101028 -dbtype nucl -label 'TAIR10 Downstream 500bp' -out /opt/databases/TAIR10_downstream_500_20101028 && rm -rf TAIR10_downstream_500_20101028
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_1000_20101104" && makeblastdb -in TAIR10_downstream_1000_20101104 -dbtype nucl -label 'TAIR10 Downstream 1000bp' -out /opt/databases/TAIR10_downstream_1000_20101104 && rm -rf TAIR10_downstream_1000_20101104
+RUN wget --no-verbose "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_3000_20101028" && makeblastdb -in TAIR10_downstream_3000_20101028 -dbtype nucl -label 'TAIR10 Downstream 3000bp' -out /opt/databases/TAIR10_downstream_3000_20101028 && rm -rf TAIR10_downstream_3000_20101028
 
 VOLUME /opt/databases
-
 CMD ["true"]
-

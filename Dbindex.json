@@ -1,0 +1,119 @@
+{
+    "name": "araport.agave-ncbi-blastdb.index", 
+    "value": {
+        "docker_from": {
+            "image": "https://hub.docker.com/r/araport/agave-ncbi-blast", 
+            "tag": "2.2.30"
+        }, 
+        "docker_this": {
+            "databases": [
+                {
+                    "dbtype": "prot", 
+                    "filename": "TAIR10_pep_20101214_updated", 
+                    "label": "TAIR10 Protein sequences (CDS translation)", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_pep_20101214_updated"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_TE.fas", 
+                    "label": "TAIR10 Transposable Elements", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_transposable_elements/TAIR10_TE.fas"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_seq_20101214_updated", 
+                    "label": "TAIR10 Gene sequences", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_seq_20101214_updated"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_cdna_20101214_updated", 
+                    "label": "TAIR10 cDNA sequences", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_cdna_20101214_updated"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_5_utr_20101028", 
+                    "label": "TAIR10 5prime UTR sequences", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_5_utr_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_3_utr_20101028", 
+                    "label": "TAIR10 3prime UTR sequences", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_3_utr_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_cds_20101214_updated", 
+                    "label": "TAIR10 Coding sequences", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_cds_20101214_updated"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_exon_20101028", 
+                    "label": "TAIR10 exons", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_exon_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_intron_20101028", 
+                    "label": "TAIR10 introns", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_intron_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_intergenic_20101028", 
+                    "label": "TAIR10 intergenic regions", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_intergenic_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_bac_con_20101028", 
+                    "label": "TAIR10 BAC sequences", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_bac_con_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_upstream_500_20101028", 
+                    "label": "TAIR10 Upstream 500bp", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_500_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_upstream_1000_20101104", 
+                    "label": "TAIR10 Upstream 1000bp", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_1000_20101104"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_upstream_3000_20101028", 
+                    "label": "TAIR10 Upstream 3000bp", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_3000_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_downstream_500_20101028", 
+                    "label": "TAIR10 Downstream 500bp", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_500_20101028"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_downstream_1000_20101104", 
+                    "label": "TAIR10 Downstream 1000bp", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_1000_20101104"
+                }, 
+                {
+                    "dbtype": "nucl", 
+                    "filename": "TAIR10_downstream_3000_20101028", 
+                    "label": "TAIR10 Downstream 3000bp", 
+                    "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_3000_20101028"
+                }
+            ], 
+            "image": "https://hub.docker.com/r/araport/agave-ncbi-blastdb", 
+            "maintainer": "vaughn@tacc.utexas.edu", 
+            "tag": "tair10", 
+            "volume": "/opt/databases"
+        }
+    }
+}
