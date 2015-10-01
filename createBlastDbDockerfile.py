@@ -10,6 +10,8 @@
 
 import yaml
 import json
+import re
+import os
 
 f = open('Manifest.yml')
 manifest = yaml.load(f)
@@ -36,7 +38,21 @@ dbindex['docker_this']['volume'] = manifest['docker_this']['volume']
 # Iterate through sources
 dbindex['docker_this']['databases'] = []
 for i in manifest['sources']:
-    dockerfile.write('RUN wget --no-verbose -O ' + i['filename'] + ' "' + i['uri'] + '" && makeblastdb -in ' + i['filename'] + ' -dbtype ' + i['dbtype'] + ' -title \'' + i['label'] + '\' -out ' + manifest['docker_this']['volume'] + '/' + i['filename'] + ' && rm -rf ' + i['filename'] + '\n' )
+    # if url is file, run this as an COPY command followed by the index
+    # otherwise, do it the same way we have been
+    match = re.search(r'^(file://)(.*)', i['uri'])
+    if match:
+        local_path=match.group(2)
+        local_fname=os.path.split(local_path)[1]
+        print 'Adding ' + local_path + '\n'
+        if os.path.isfile(local_path):
+            dockerfile.write('COPY ' + local_path + ' /home/\n')
+            dockerfile.write('RUN makeblastdb -in ' + local_fname + ' -dbtype ' + i['dbtype'] + ' -title \'' + i['label'] + '\' -out ' + manifest['docker_this']['volume'] + '/' + i['filename'] + ' && rm -rf ' + i['filename'] + '\n')
+        else:
+            raise NameError('File not found')
+    else:
+        dockerfile.write('RUN wget --no-verbose -O ' + i['filename'] + ' "' + i['uri'] + '" && makeblastdb -in ' + i['filename'] + ' -dbtype ' + i['dbtype'] + ' -title \'' + i['label'] + '\' -out ' + manifest['docker_this']['volume'] + '/' + i['filename'] + ' && rm -rf ' + i['filename'] + '\n' )
+
     # Manually create the dbsource dict in case we need to do any
     # manipulation in the future. Theoretically should just
     # be able to yaml->dict->json this

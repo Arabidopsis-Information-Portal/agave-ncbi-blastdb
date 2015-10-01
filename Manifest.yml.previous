@@ -1,0 +1,94 @@
+---
+# This manifest file is to be used with createBlastDbDockerfile.py
+#
+# The docker_from section describes a source image
+# It must have as its ultimate parent an image in which the BLAST binaries
+# are present and usable. For future data volumes, this can point
+# to the previously released version because the first iteration
+# data container is sourced from araport/agave-ncbi-blast:2.2.30
+docker_from:
+    registry: "https://hub.docker.com/r/"
+    image: araport/agave-ncbi-blast # must exist and be accessible
+    tag: 2.2.30 # must exist and be accessible
+# The docker_to section provides info we need to build the data container
+docker_this:
+    registry: "https://hub.docker.com/r/"
+    image: araport/agave-ncbi-blastdb
+    tag: tair10
+    latest: true
+    volume: /opt/databases # This must exist in the source image. Env variable BLASTDB must point to it
+    cmd: "true"
+    maintainer: "vaughn@tacc.utexas.edu"
+
+# At present, all source URLs must be uncompressed Fasta but we will add
+# support for automatic unarchiving in the future. Dbtype is either prot or
+# nucl - other values will cause makeblastdb to fail in the build step
+sources:
+    - uri : ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_pep_20101214_updated
+      filename: TAIR10_pep_20101214_updated
+      label: "TAIR10 Protein sequences (CDS translation)"
+      dbtype: prot
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_transposable_elements/TAIR10_TE.fas
+      filename: TAIR10_TE.fas
+      label: "TAIR10 Transposable Elements"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_seq_20101214_updated
+      filename: TAIR10_seq_20101214_updated
+      label: "TAIR10 Gene sequences"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_cdna_20101214_updated
+      filename: TAIR10_cdna_20101214_updated
+      label: "TAIR10 cDNA sequences"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_5_utr_20101028
+      filename: TAIR10_5_utr_20101028
+      label: "TAIR10 5prime UTR sequences"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_3_utr_20101028
+      filename: TAIR10_3_utr_20101028
+      label: "TAIR10 3prime UTR sequences"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_cds_20101214_updated
+      filename: TAIR10_cds_20101214_updated
+      label: "TAIR10 Coding sequences"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_exon_20101028
+      filename: TAIR10_exon_20101028
+      label: "TAIR10 exons"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_intron_20101028
+      filename: TAIR10_intron_20101028
+      label: "TAIR10 introns"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_intergenic_20101028
+      filename: TAIR10_intergenic_20101028
+      label: "TAIR10 intergenic regions"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/TAIR10_bac_con_20101028
+      filename: TAIR10_bac_con_20101028
+      label: "TAIR10 BAC sequences"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_500_20101028
+      filename: TAIR10_upstream_500_20101028
+      label: "TAIR10 Upstream 500bp"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_1000_20101104
+      filename: TAIR10_upstream_1000_20101104
+      label: "TAIR10 Upstream 1000bp"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/upstream_sequences/TAIR10_upstream_3000_20101028
+      filename: TAIR10_upstream_3000_20101028
+      label: "TAIR10 Upstream 3000bp"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_500_20101028
+      filename: TAIR10_downstream_500_20101028
+      label: "TAIR10 Downstream 500bp"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_1000_20101104
+      filename: TAIR10_downstream_1000_20101104
+      label: "TAIR10 Downstream 1000bp"
+      dbtype: nucl
+    - uri: ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_3000_20101028
+      filename: TAIR10_downstream_3000_20101028
+      label: "TAIR10 Downstream 3000bp"
+      dbtype: nucl
