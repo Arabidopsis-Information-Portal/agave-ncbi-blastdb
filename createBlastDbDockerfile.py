@@ -77,7 +77,7 @@ dockerfile.close()
 # Then, print out the dbindex.json file and provide instructions on how to post it
 
 agave_meta_dbindex = dict()
-agave_meta_dbindex['name'] = 'araport.blast.index.' + manifest['docker_this']['tag']
+agave_meta_dbindex['name'] = 'araport.blastdb.index'
 agave_meta_dbindex['value'] = dbindex
 
 dbindexfname = 'Dbindex.json'
