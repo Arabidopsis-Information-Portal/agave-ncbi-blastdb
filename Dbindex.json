@@ -1,5 +1,5 @@
 {
-    "name": "araport.blast.index.tair10", 
+    "name": "araport.blastdb.index", 
     "value": {
         "docker_from": {
             "image": "araport/agave-ncbi-blast", 

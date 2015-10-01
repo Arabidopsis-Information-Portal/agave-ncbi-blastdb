@@ -44,7 +44,7 @@ fi
 echo "Testing authentication workflow..."
 if [[ -z "$TOKEN" ]];
     then
-    TOKEN=$(auth-tokens-refresh)
+    TOKEN=$(auth-tokens-refresh -S)
     if [[ "$TOKEN" =~ "invalid" ]]
     then
         on_error "There was an error refreshing your access token. Please run 'auth-tokens-create -S' or manually acquire a token."
@@ -58,10 +58,12 @@ TAG=$(jq -r .value.docker_this.tag "${INDEXFILE}")
 
 # Query to see if the record exists
 EXISTS=0
-query_orig="{\"name\":\"araport.blast.index.${TAG}\"}"
+query_orig="{\"name\":\"araport.blastdb.index\",\"value.docker_this.tag\":\"${TAG}\"}"
 query_enc=`echo -ne "${query_orig}" | hexdump -v -e '/1 "%02x"' | sed 's/\(..\)/%\1/g'`
 QUUID=$(metadata-list -z $TOKEN -i -Q $query_enc)
-
+# All agave structured data records have a UUID ending in -012
+# Should actually replace this with a call to a UUID typing function
+# in order to be future proof
 if [[ "$QUUID" =~ -012$ ]];
 then
     echo "Index exists ($QUUID). Will update it."
