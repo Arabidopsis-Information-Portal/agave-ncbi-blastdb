@@ -49,12 +49,20 @@ if [[ -z "$TOKEN" ]];
     then
         on_error "There was an error refreshing your access token. Please run 'auth-tokens-create -S' or manually acquire a token."
     fi
+else
+    echo "Using provided token $TOKEN"
 fi
+
+IMAGE=$(jq -r .value.docker_this.image "${INDEXFILE}")
+TAG=$(jq -r .value.docker_this.tag "${INDEXFILE}")
 
 # Query to see if the record exists
 EXISTS=0
-QUUID=$(metadata-list -z $TOKEN -i -Q '{"name":"araport.agave-ncbi-blastdb.index"}')
-if [[ "$QUUID" != "[]" ]];
+query_orig="{\"name\":\"araport.blast.index.${TAG}\"}"
+query_enc=`echo -ne "${query_orig}" | hexdump -v -e '/1 "%02x"' | sed 's/\(..\)/%\1/g'`
+QUUID=$(metadata-list -z $TOKEN -i -Q $query_enc)
+
+if [[ "$QUUID" =~ -012$ ]];
 then
     echo "Index exists ($QUUID). Will update it."
     EXISTS=1

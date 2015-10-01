@@ -23,10 +23,12 @@ dockerfile.write('MAINTAINER ' + manifest['docker_this']['maintainer'] + '\n\n')
 # Index
 dbindex['docker_from'] = dict()
 dbindex['docker_this'] = dict()
-dbindex['docker_from']['image'] = 'https://hub.docker.com/r/' + manifest['docker_from']['image']
+dbindex['docker_from']['registry'] = manifest['docker_from']['registry']
+dbindex['docker_from']['image'] = manifest['docker_from']['image']
 dbindex['docker_from']['tag'] = manifest['docker_from']['tag']
 dbindex['docker_this']['maintainer'] = manifest['docker_this']['maintainer']
-dbindex['docker_this']['image'] = 'https://hub.docker.com/r/' + manifest['docker_this']['image']
+dbindex['docker_this']['registry'] = manifest['docker_this']['registry']
+dbindex['docker_this']['image'] = manifest['docker_this']['image']
 dbindex['docker_this']['tag'] = manifest['docker_this']['tag']
 dbindex['docker_this']['volume'] = manifest['docker_this']['volume']
 # Tags
@@ -59,7 +61,7 @@ dockerfile.close()
 # Then, print out the dbindex.json file and provide instructions on how to post it
 
 agave_meta_dbindex = dict()
-agave_meta_dbindex['name'] = 'araport.agave-ncbi-blastdb.index'
+agave_meta_dbindex['name'] = 'araport.blast.index.' + manifest['docker_this']['tag']
 agave_meta_dbindex['value'] = dbindex
 
 dbindexfname = 'Dbindex.json'

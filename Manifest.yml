@@ -7,10 +7,12 @@
 # to the previously released version because the first iteration
 # data container is sourced from araport/agave-ncbi-blast:2.2.30
 docker_from:
+    registry: "https://hub.docker.com/r/"
     image: araport/agave-ncbi-blast # must exist and be accessible
     tag: 2.2.30 # must exist and be accessible
 # The docker_to section provides info we need to build the data container
 docker_this:
+    registry: "https://hub.docker.com/r/"
     image: araport/agave-ncbi-blastdb
     tag: tair10
     latest: true

@@ -1,8 +1,9 @@
 {
-    "name": "araport.agave-ncbi-blastdb.index", 
+    "name": "araport.blast.index.tair10", 
     "value": {
         "docker_from": {
-            "image": "https://hub.docker.com/r/araport/agave-ncbi-blast", 
+            "image": "araport/agave-ncbi-blast", 
+            "registry": "https://hub.docker.com/r/", 
             "tag": "2.2.30"
         }, 
         "docker_this": {
@@ -110,8 +111,9 @@
                     "uri": "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_3000_20101028"
                 }
             ], 
-            "image": "https://hub.docker.com/r/araport/agave-ncbi-blastdb", 
+            "image": "araport/agave-ncbi-blastdb", 
             "maintainer": "vaughn@tacc.utexas.edu", 
+            "registry": "https://hub.docker.com/r/", 
             "tag": "tair10", 
             "volume": "/opt/databases"
         }
