@@ -36,7 +36,7 @@ dbindex['docker_this']['volume'] = manifest['docker_this']['volume']
 # Iterate through sources
 dbindex['docker_this']['databases'] = []
 for i in manifest['sources']:
-    dockerfile.write('RUN wget --no-verbose "' + i['uri'] + '" && makeblastdb -in ' + i['filename'] + ' -dbtype ' + i['dbtype'] + ' -label \'' + i['label'] + '\' -out ' + manifest['docker_this']['volume'] + '/' + i['filename'] + ' && rm -rf ' + i['filename'] + '\n' )
+    dockerfile.write('RUN wget --no-verbose -O ' + i['filename'] + ' "' + i['uri'] + '" && makeblastdb -in ' + i['filename'] + ' -dbtype ' + i['dbtype'] + ' -title \'' + i['label'] + '\' -out ' + manifest['docker_this']['volume'] + '/' + i['filename'] + ' && rm -rf ' + i['filename'] + '\n' )
     # Manually create the dbsource dict in case we need to do any
     # manipulation in the future. Theoretically should just
     # be able to yaml->dict->json this
