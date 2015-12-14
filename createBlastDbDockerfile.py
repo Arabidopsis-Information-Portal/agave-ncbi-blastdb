@@ -65,7 +65,7 @@ for i in manifest['sources']:
     dbindex['docker_this']['databases'].append(dbsource)
 
 # These commands need to go at the end
-dockerfile.write('\nVOLUME ' + manifest['docker_this']['volume'] + '\n')
+# dockerfile.write('\nVOLUME ' + manifest['docker_this']['volume'] + '\n')
 dockerfile.write('CMD ["' + manifest['docker_this']['cmd'] + '"]\n')
 # dockerfile.write('RUN rm -rf /opt/ncbi-blast*; rm -rf /opt/blast\n')
 dockerfile.close()
