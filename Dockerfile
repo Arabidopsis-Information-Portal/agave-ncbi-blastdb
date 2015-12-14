@@ -19,5 +19,5 @@ RUN wget --no-verbose -O TAIR10_downstream_500_20101028 "ftp://ftp.arabidopsis.o
 RUN wget --no-verbose -O TAIR10_downstream_1000_20101104 "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_1000_20101104" && makeblastdb -in TAIR10_downstream_1000_20101104 -dbtype nucl -title 'TAIR10 Downstream 1000bp' -out /opt/databases/TAIR10_downstream_1000_20101104 && rm -rf TAIR10_downstream_1000_20101104
 RUN wget --no-verbose -O TAIR10_downstream_3000_20101028 "ftp://ftp.arabidopsis.org/home/tair/Genes/TAIR10_genome_release/TAIR10_blastsets/downstream_sequences/TAIR10_downstream_3000_20101028" && makeblastdb -in TAIR10_downstream_3000_20101028 -dbtype nucl -title 'TAIR10 Downstream 3000bp' -out /opt/databases/TAIR10_downstream_3000_20101028 && rm -rf TAIR10_downstream_3000_20101028
 
-VOLUME /opt/databases
+#VOLUME /opt/databases
 CMD ["true"]
