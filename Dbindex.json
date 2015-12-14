@@ -10,15 +10,15 @@
             "databases": [
                 {
                     "dbtype": "nucl", 
-                    "filename": "Araport11_genes.20150701.cds.fasta", 
+                    "filename": "Araport11_genes.20151006.cds.fasta", 
                     "label": "Araport11 Coding sequences", 
-                    "uri": "file://data/araport11/Araport11_genes.20150701.cds.fasta"
+                    "uri": "file://data/araport11/Araport11_genes.20151006.cds.fasta"
                 }, 
                 {
                     "dbtype": "prot", 
-                    "filename": "Araport11_genes.20150701.pep.fasta", 
+                    "filename": "Araport11_genes.20151006.pep.fasta", 
                     "label": "Araport11 Protein sequences", 
-                    "uri": "file://data/araport11/Araport11_genes.20150701.pep.fasta"
+                    "uri": "file://data/araport11/Araport11_genes.20151006.pep.fasta"
                 }
             ], 
             "image": "araport/agave-ncbi-blastdb", 

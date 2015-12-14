@@ -45,7 +45,7 @@ echo "Testing authentication workflow..."
 if [[ -z "$TOKEN" ]];
     then
     TOKEN=$(auth-tokens-refresh -S)
-    if [[ "$TOKEN" =~ "invalid" ]]
+    if [[ "$TOKEN" =~ "Invalid" ]]
     then
         on_error "There was an error refreshing your access token. Please run 'auth-tokens-create -S' or manually acquire a token."
     fi
@@ -84,3 +84,4 @@ echo -e "Notification:\n$EUUID"
 rm -rf "notify.json"
 # Share the doc with the world
 PEMS=$(metadata-pems-addupdate -z $TOKEN -u public -p READ "$NUUID")
+PEMS=$(metadata-pems-addupdate -z $TOKEN -u world -p READ "$NUUID")
