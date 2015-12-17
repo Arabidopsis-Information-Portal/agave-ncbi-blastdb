@@ -24,11 +24,11 @@ docker_this:
 # support for automatic unarchiving in the future. Dbtype is either prot or
 # nucl - other values will cause makeblastdb to fail in the build step
 sources:
-    - uri : file://data/araport11/Araport11_genes.20151006.cds.fasta
-      filename: Araport11_genes.20151006.cds.fasta
-      label: "Araport11 Coding sequences"
+    - uri : file://data/araport11/Araport11_genes.20151202.cds.fasta
+      filename: Araport11_genes.20151202.cds.fasta
+      label: "Araport11 Coding Sequences (CDS) - Pre-Release 3 (Dec 2015)"
       dbtype: nucl
-    - uri: file://data/araport11/Araport11_genes.20151006.pep.fasta
-      filename: Araport11_genes.20151006.pep.fasta
-      label: "Araport11 Protein sequences"
+    - uri: file://data/araport11/Araport11_genes.20151202.pep.fasta
+      filename: Araport11_genes.20151202.pep.fasta
+      label: "Araport11 Protein Sequences (CDS translation) - Pre-Release 3 (Dec 2015)"
       dbtype: prot

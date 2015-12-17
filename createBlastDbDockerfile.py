@@ -18,16 +18,18 @@ manifest = yaml.load(f)
 f.close()
 
 dbindex = dict()
+# Data source Dockerfile
 dockerfile = open('Dockerfile', 'w')
 # Header bits in Dockerfile
 dockerfile.write('FROM ' + manifest['docker_from']['image'] + ':' + manifest['docker_from']['tag'] + '\n')
 dockerfile.write('MAINTAINER ' + manifest['docker_this']['maintainer'] + '\n\n')
 # Index
 dbindex['docker_from'] = dict()
-dbindex['docker_this'] = dict()
 dbindex['docker_from']['registry'] = manifest['docker_from']['registry']
 dbindex['docker_from']['image'] = manifest['docker_from']['image']
 dbindex['docker_from']['tag'] = manifest['docker_from']['tag']
+
+dbindex['docker_this'] = dict()
 dbindex['docker_this']['maintainer'] = manifest['docker_this']['maintainer']
 dbindex['docker_this']['registry'] = manifest['docker_this']['registry']
 dbindex['docker_this']['image'] = manifest['docker_this']['image']
@@ -70,6 +72,13 @@ dockerfile.write('CMD ["' + manifest['docker_this']['cmd'] + '"]\n')
 # dockerfile.write('RUN rm -rf /opt/ncbi-blast*; rm -rf /opt/blast\n')
 dockerfile.close()
 
+# Data Volume (derived from Data Source)
+dockerfile2 = open('Dockerfile.2', 'w')
+dockerfile2.write('FROM ' + manifest['docker_this']['image'] + ':' + manifest['docker_this']['tag'] + '\n')
+dockerfile2.write('MAINTAINER ' + manifest['docker_this']['maintainer'] + '\n\n')
+dockerfile2.write('\nVOLUME ' + manifest['docker_this']['volume'] + '\n')
+dockerfile2.close()
+
 # We already dealt with these ^ pragmas in the dbindex so nothing needs to be done
 # with them. We do need to transform dbindex into an Agave metadata doc
 # which setting it as the value in the follow structure
@@ -78,6 +87,8 @@ dockerfile.close()
 
 agave_meta_dbindex = dict()
 agave_meta_dbindex['name'] = 'araport.blastdb.index'
+# Over-ride dbindex.docker.this.image to point to the -vol image
+dbindex['docker_this']['image'] = manifest['docker_this']['image'] + '-vol'
 agave_meta_dbindex['value'] = dbindex
 
 dbindexfname = 'Dbindex.json'
@@ -85,7 +96,10 @@ with open(dbindexfname, 'w') as outfile:
     json.dump(agave_meta_dbindex, outfile, sort_keys=True, indent=4)
 
 print 'Now run the following from this directory:'
-print 'docker build --rm=true -t ' + manifest['docker_this']['image'] + ':' + manifest['docker_this']['tag'] + ' .'
-print 'docker tag -f ' + manifest['docker_this']['image'] + ':' + manifest['docker_this']['tag'] + ' ' + manifest['docker_this']['image'] + ':latest'
+print 'docker pull ' + manifest['docker_from']['image'] + ':' + manifest['docker_from']['tag']
+print 'docker build -f Dockerfile --rm=true -t ' + manifest['docker_this']['image'] + ':' + manifest['docker_this']['tag'] + ' .'
+print 'docker build -f Dockerfile.2 --rm=true -t ' + manifest['docker_this']['image'] + '-vol' + ':' + manifest['docker_this']['tag'] + ' .'
+print 'docker tag -f ' + manifest['docker_this']['image'] + '-vol' ':' + manifest['docker_this']['tag'] + ' ' + manifest['docker_this']['image'] + '-vol' + ':latest'
 print 'docker push --disable-content-trust=true ' + manifest['docker_this']['image']
+print 'docker push --disable-content-trust=true ' + manifest['docker_this']['image'] + '-vol'
 print './publishDatabaseIndex.sh Dbindex.json [Token]'
